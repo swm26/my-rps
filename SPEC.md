@@ -54,6 +54,6 @@ Use `unit`, `integration`, and `e2e` pytest markers. Run `.venv/bin/python check
 ### Work record
 
 - Issue: https://github.com/swm26/my-rps/issues/1
-- Pull request / CI: add actual URLs when they exist.
+- Pull request / CI: https://github.com/swm26/my-rps/pull/2, https://github.com/swm26/my-rps/actions/runs/41383398037/job/125078869057
 - Implementation: determine_winner function present in `game.py`
 - Checks: Full `.venv/bin/python check.py` passed (Black, Pylint, 25 non-browser tests, 6 real-browser tests). Tests: `tests/test_game.py` (unit and integration), `tests/e2e/test_round.py` (browser round and replay), plus the supplied `tests/test_shell.py` for invalid and missing moves. Browser observations: Game works fine, no issues seen.
