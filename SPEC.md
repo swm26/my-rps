@@ -27,7 +27,16 @@ Results are from the **player’s perspective**. `determine_winner(player, compu
 
 ### Agreed plan
 
-Before implementation, predict one matchup and explain it with your local coding agent. Discuss a short plan and checks. Once it makes sense, ask the agent to replace this paragraph with the agreed plan, preserving the expected results above. Continue in the same chat.
+I predicted that if the player chooses rock and the computer chooses paper, the computer wins, because paper covers rock. `determine_winner("rock", "paper")` should return `lose`, and the page should show "Computer wins".
+
+Plan for RPS-001:
+
+- Implement `determine_winner(player, computer)` in `game.py` so all nine matchups in the table above return the expected `win`, `lose`, or `tie` from the player's perspective.
+- Unit (positive): test all nine expected results literally, including the rock-vs-paper loss and the ties.
+- Integration (positive): submit a round with a fixed computer choice and check that the page shows both choices and the correct result, using the real rule function.
+- Integration (negative): a missing or unsupported move (anything other than rock, paper, or scissors) returns HTTP 400 with a helpful message, and the rules are not called.
+- E2E (positive): in a real browser, play a round with a fixed computer choice, check the result, then play again to confirm rounds are independent.
+- Out of scope: scoring, saved history, and renaming or restyling the interface.
 
 ### Checks
 
@@ -44,7 +53,7 @@ Use `unit`, `integration`, and `e2e` pytest markers. Run `.venv/bin/python check
 
 ### Work record
 
-- Issue: add your own issue URL.
+- Issue: https://github.com/swm26/my-rps/issues/1
 - Pull request / CI: add actual URLs when they exist.
-- Implementation: **Not implemented.** The shell is supplied; `game.py` is unfinished.
-- Checks: **Rules not verified.** Supplied request/browser tests cover the shell only. After implementation, record actual full-check results and your browser observations here; put detailed results in the PR. Passing formatting and analysis alone is not evidence of correct rules.
+- Implementation: determine_winner function present in `game.py`
+- Checks: Full `.venv/bin/python check.py` passed (Black, Pylint, 25 non-browser tests, 6 real-browser tests). Tests: `tests/test_game.py` (unit and integration), `tests/e2e/test_round.py` (browser round and replay), plus the supplied `tests/test_shell.py` for invalid and missing moves. Browser observations: Game works fine, no issues seen.
